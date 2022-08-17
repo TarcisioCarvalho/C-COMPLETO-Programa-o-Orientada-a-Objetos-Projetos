@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Wicp9R2fqt3KA1h+79aQ8tOWGq5tewHsOujiHeoFootBnulMRLfg5p0/TBIa/moVXh2XVAf/J/WBjP0rd4VlhA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tarci\\Documents\\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\\Primeiro\\ConsoleApp1\\ConsoleApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tarci\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}

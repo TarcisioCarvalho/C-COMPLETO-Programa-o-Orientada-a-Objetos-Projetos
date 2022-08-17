@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "1LsMuz4dXV2vS2+zwxgjioUPcyoSbBmMMA6swKYBlMxxDqL5uJd8QZNVTlRRpifTWP/amQAofaMJ/7m6ax7mbQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tarci\\Documents\\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\\Capitulo4\\Capitulo4\\Capitulo4.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tarci\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
