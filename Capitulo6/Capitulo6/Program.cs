@@ -8,7 +8,7 @@ namespace Capitulo6
     {
         static void Main(string[] args)
         {
-            Exercice2();
+            Exercice3();
         }
 
         static void Exercice1()
@@ -100,6 +100,56 @@ namespace Capitulo6
 
            
 
+        }
+        static void Exercice3()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int m = int.Parse(Console.ReadLine());
+
+            int[,] matriz = new int[n, m];
+
+            for (int i = 0; i < n; i++)
+            {
+                string[] values = Console.ReadLine().Split(" ");
+                for (int j = 0; j < m; j++)
+                {
+                    matriz[i, j] = int.Parse(values[j]);
+
+                }
+                Console.WriteLine();
+            }
+
+            int valor = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < n; i++)
+            {
+                
+                for (int j = 0; j < m; j++)
+                {
+                    if (matriz[i,j]==valor)
+                    {
+                        Console.WriteLine($"Position {i}, {j} : ");
+                        if (j-1>=0)
+                        {
+                            Console.WriteLine($"Left {matriz[i,j-1]}");
+                        }
+                        if (i - 1 >= 0)
+                        {
+                            Console.WriteLine($"Up {matriz[i-1 , j ]}");
+                        }
+                        if (j + 1 < m)
+                        {
+                            Console.WriteLine($"Right {matriz[i, j + 1]}");
+                        }
+                        if (i + 1 < n)
+                        {
+                            Console.WriteLine($"Down {matriz[i + 1, j]}");
+                        }
+                    }
+
+                }
+                
+            }
         }
     }
 }
