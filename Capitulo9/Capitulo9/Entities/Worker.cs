@@ -13,7 +13,7 @@ namespace Capitulo9.Entities
         public WorkerLevel Level { get; set; }
         public double BaseSalary { get; set; }
         public Department Department = new Department();
-        public List<HourContract> hourContracts = new List<HourContract>();
+        public List<HourContract> hourContracts { get; set; } = new List<HourContract>();
 
         public Worker(string name, WorkerLevel level, double baseSalary, string department)
         {

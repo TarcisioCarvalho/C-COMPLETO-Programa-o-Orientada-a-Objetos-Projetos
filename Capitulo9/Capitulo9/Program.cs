@@ -2,6 +2,7 @@
 using Capitulo9.Entities.Enums;
 using System;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace Capitulo9
 {
@@ -9,7 +10,7 @@ namespace Capitulo9
     {
         static void Main(string[] args)
         {
-            Exercice1();
+            Exercice3();
         }
 
         static void Exercice1()
@@ -47,6 +48,49 @@ namespace Capitulo9
 
             Console.WriteLine(worker);
             Console.WriteLine(worker.income(int.Parse(mesAno[1]),int.Parse(mesAno[0])));
+        }
+        static void Exercice2()
+        {
+            Post post = new Post("Traveling to New Zealand", "I'm going to visit this wonderful country!",
+                12,new List<Comment>() { new Comment("Text1") , new Comment("Text2") }
+                );
+            Console.WriteLine(post);
+        }
+        static void Exercice3()
+        {
+            Console.WriteLine("Enter cliente data: ");
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
+            Console.Write("Email: ");
+            string email = Console.ReadLine();
+            Console.WriteLine("Birth date (DD/MM/YYYY): ");
+            DateTime birthDate = DateTime.Parse(Console.ReadLine());
+            Client client = new Client(name, email, birthDate);
+
+            Console.WriteLine("Enter order data:");
+            Console.Write("Status:");
+            OrderStatus os;
+            Enum.TryParse(Console.ReadLine(), out os);
+            Console.Write("How many items to this order? ");
+            Order order = new Order(os,client);
+            int n = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine($"Enter #{i} item data:");
+                Console.WriteLine("Product name: ");
+                string productName = Console.ReadLine();
+                Console.Write("Product price: ");
+                double productPrice = double.Parse(Console.ReadLine());
+                Console.Write("Quantity: ");
+                int quantity = int.Parse(Console.ReadLine());
+                Product product = new Product(productName, productPrice);
+                OrderItem orderItem = new OrderItem(quantity, productPrice, product);
+
+                order.addItem(orderItem);
+            }
+
+            Console.WriteLine(order);
         }
     }
 }
