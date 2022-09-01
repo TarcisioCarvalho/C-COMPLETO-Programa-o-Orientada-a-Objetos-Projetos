@@ -1,0 +1,16 @@
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\bin\Debug\net5.0\Capitulo10.exe
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\bin\Debug\net5.0\Capitulo10.deps.json
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\bin\Debug\net5.0\Capitulo10.runtimeconfig.json
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\bin\Debug\net5.0\Capitulo10.runtimeconfig.dev.json
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\bin\Debug\net5.0\Capitulo10.dll
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\bin\Debug\net5.0\ref\Capitulo10.dll
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\bin\Debug\net5.0\Capitulo10.pdb
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.csproj.AssemblyReference.cache
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.AssemblyInfoInputs.cache
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.AssemblyInfo.cs
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.csproj.CoreCompileInputs.cache
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.dll
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\ref\Capitulo10.dll
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.pdb
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Capitulo10\Capitulo10\obj\Debug\net5.0\Capitulo10.genruntimeconfig.cache
