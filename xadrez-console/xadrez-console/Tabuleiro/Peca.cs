@@ -10,10 +10,10 @@ namespace tabuleiro
         public Tabuleiro Tabuleiro { get; set; }
         public int QtdMovimentos { get; set; }
 
-        public Peca(Cor cor, Posicao posicao, Tabuleiro tabuleiro)
+        public Peca(Cor cor, Tabuleiro tabuleiro)
         {
             Cor = cor;
-            Posicao = posicao;
+            Posicao = null;
             Tabuleiro = tabuleiro;
             QtdMovimentos = 0;
         }
