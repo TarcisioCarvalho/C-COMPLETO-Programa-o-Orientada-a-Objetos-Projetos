@@ -1,5 +1,6 @@
 ﻿using System;
 using tabuleiro;
+using tabuleiro.Exceptions;
 using xadrez;
 using xadrez_console.tabuleiro.Enums;
 
@@ -14,9 +15,18 @@ namespace xadrez_console
 
         static void teste()
         {
-            Tabuleiro tabuleiro = new Tabuleiro(8, 8);
-            tabuleiro.colocarPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(0, 0));
-            Tela.imprimeTela(tabuleiro);
+            try
+            {
+                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+                tabuleiro.colocarPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(0, 0));
+                
+                Tela.imprimeTela(tabuleiro);
+            }catch(TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Console.ReadLine();
+            
         }
     }
 }
