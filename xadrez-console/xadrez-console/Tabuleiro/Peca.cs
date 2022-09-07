@@ -29,6 +29,11 @@ namespace tabuleiro
             QtdMovimentos++;
         }
 
+        public bool podeMoverPara(Posicao posicao)
+        {
+            return movimentosPossiveis()[posicao.Linha, posicao.Coluna];
+        }
+
         public abstract bool[,] movimentosPossiveis(); 
     }
 }
