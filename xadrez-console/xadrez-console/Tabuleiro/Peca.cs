@@ -3,7 +3,7 @@ using xadrez_console.tabuleiro.Enums;
 
 namespace tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Cor Cor { get; protected set; }
         public Posicao Posicao { get;  set; }
@@ -18,9 +18,17 @@ namespace tabuleiro
             QtdMovimentos = 0;
         }
 
+        protected bool podeMover(Posicao posicao)
+        {
+            Peca p = Tabuleiro.peca(posicao);
+            return p == null || Cor != p.Cor;
+        }
+
         public void incrementaMovimento()
         {
             QtdMovimentos++;
         }
+
+        public abstract bool[,] movimentosPossiveis(); 
     }
 }
