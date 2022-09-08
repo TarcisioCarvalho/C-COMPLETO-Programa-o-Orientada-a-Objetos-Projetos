@@ -8,6 +8,47 @@ namespace xadrez_console
 {
     class Tela
     {
+        public static void imprimirPartida(PartidaXadrez partidaXadrez)
+        {
+            imprimeTela(partidaXadrez.Tabuleiro);
+            Console.WriteLine();
+            imprimirPecasCapturadas(partidaXadrez);
+            Console.WriteLine();
+            imprimPecasEmJogo(partidaXadrez);
+            Console.WriteLine($"Turno: {partidaXadrez.Turno}");
+            Console.WriteLine($"Aguardando jogada do jogador: {partidaXadrez.JogadorAtual}");
+            if(partidaXadrez.Xeque) Console.WriteLine("XEQUE! ");
+            Console.WriteLine("\n");
+        }
+        public static void imprimirPecasCapturadas(PartidaXadrez partidaXadrez)
+        {
+            Console.WriteLine("Peças Capturadas: ");
+            Console.Write("Brancas: ");
+            imprimirLista(partidaXadrez.pecasCapturadas(Cor.Branca));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            imprimirLista(partidaXadrez.pecasCapturadas(Cor.Preta));
+            Console.ForegroundColor = aux;
+        }
+
+        public static void imprimPecasEmJogo(PartidaXadrez partidaXadrez)
+        {
+            Console.WriteLine("Partidas em Jogo Brancas");
+            Console.Write("Brancas");
+            imprimirLista(partidaXadrez.pecasEmJogo(Cor.Branca));
+            Console.WriteLine();
+        } 
+        public static void imprimirLista(List<Peca> pecas)
+        {
+            Console.Write("[");
+            foreach (Peca peca in pecas)
+            {
+                Console.Write(peca + " ");
+            }
+            Console.Write("]");
+        }
         public static void imprimeTela(Tabuleiro tabuleiro)
         {
             for (int i = 0; i < tabuleiro.Linhas; i++)
