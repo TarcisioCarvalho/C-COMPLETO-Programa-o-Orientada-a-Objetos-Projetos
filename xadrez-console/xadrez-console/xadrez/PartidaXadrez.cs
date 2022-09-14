@@ -202,7 +202,7 @@ namespace xadrez
 
         public void validaPosicaoDestino(Posicao origem,Posicao destino)
         {
-            if(!Tabuleiro.peca(origem).podeMoverPara(destino)) throw new TabuleiroException("Posição de destino inválida");
+            if(!Tabuleiro.peca(origem).movimentoPossivel(destino)) throw new TabuleiroException("Posição de destino inválida");
         }
 
         public bool existeMovimentosPossiveis(Posicao posicao)
