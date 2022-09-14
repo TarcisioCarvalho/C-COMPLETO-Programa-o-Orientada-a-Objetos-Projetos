@@ -15,6 +15,7 @@ namespace xadrez
             return "R";
         }
 
+       
 
         public override bool[,] movimentosPossiveis()
         {
