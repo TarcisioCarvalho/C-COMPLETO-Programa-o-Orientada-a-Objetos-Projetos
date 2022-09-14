@@ -16,6 +16,11 @@ namespace xadrez_console
             Console.WriteLine();
             imprimPecasEmJogo(partidaXadrez);
             Console.WriteLine($"Turno: {partidaXadrez.Turno}");
+            if (partidaXadrez.Terminada)
+            {
+                Console.WriteLine("Partida Terminada!");
+                return;
+            }
             Console.WriteLine($"Aguardando jogada do jogador: {partidaXadrez.JogadorAtual}");
             if(partidaXadrez.Xeque) Console.WriteLine("XEQUE! ");
             Console.WriteLine("\n");
@@ -88,7 +93,7 @@ namespace xadrez_console
         {
             string s = Console.ReadLine();
             char coluna = s[0];
-            int linha = int.Parse(s[1]+"");
+            int linha = int.Parse(s[1].ToString());
             return new PosicaoXadrez(coluna, linha);
         }
 

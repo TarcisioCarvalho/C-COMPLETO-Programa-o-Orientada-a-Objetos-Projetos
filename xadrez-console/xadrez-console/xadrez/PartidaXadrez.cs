@@ -34,20 +34,30 @@ namespace xadrez
 
         public void colocaPecas()
         {
-            colocaNovaPeca(new Rei(Cor.Branca,Tabuleiro), new PosicaoXadrez('a',1).toPosicao());
-            colocaNovaPeca(new Rei(Cor.Branca, Tabuleiro), new PosicaoXadrez('c', 1).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 1).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 1).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('c', 2).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 2).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 2).toPosicao());
+            colocaNovaPeca(new Rei(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 1).toPosicao());
 
-            colocaNovaPeca(new Rei(Cor.Preta, Tabuleiro), new PosicaoXadrez('c', 8).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('b', 8).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 8).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('c', 7).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('b', 7).toPosicao());
-            colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 7).toPosicao());
+            colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('c', 1).toPosicao());
+            colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('h', 1).toPosicao());
+
+            colocaNovaPeca(new Rei(Cor.Preta, Tabuleiro), new PosicaoXadrez('a', 8).toPosicao());
+           
+
+
+            /* colocaNovaPeca(new Rei(Cor.Branca,Tabuleiro), new PosicaoXadrez('a',1).toPosicao());
+
+             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 1).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 1).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('c', 2).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 2).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 2).toPosicao());
+
+             colocaNovaPeca(new Rei(Cor.Preta, Tabuleiro), new PosicaoXadrez('c', 8).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('b', 8).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 8).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('c', 7).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('b', 7).toPosicao());
+             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 7).toPosicao());
+            */
             // Tabuleiro.colocarPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 1).toPosicao());
         }
 
@@ -79,6 +89,33 @@ namespace xadrez
             }
 
             return false;
+        }
+
+        public bool testeXequemate(Cor cor)
+        {
+            if (!estaEmXeque(cor)) return false;
+
+            foreach (Peca pecaEmJogo in pecasEmJogo(cor))
+            {
+                bool[,] mat = pecaEmJogo.movimentosPossiveis();
+                for (int i = 0; i < Tabuleiro.Linhas; i++)
+                {
+                    for (int j = 0; j < Tabuleiro.Colunas; j++)
+                    {
+                        if (mat[i, j])
+                        {
+                            Posicao origem = pecaEmJogo.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = movimentaPeca(origem, destino);
+                            bool testeXeque = estaEmXeque(cor);
+                            desfazJogada(origem, destino, pecaCapturada);
+
+                            if (!testeXeque) return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         public List<Peca> pecasCapturadas(Cor cor)
@@ -132,6 +169,8 @@ namespace xadrez
 
             if (estaEmXeque(corAdversaria(JogadorAtual))) Xeque = true;
             else Xeque = false;
+
+            if (testeXequemate(corAdversaria(JogadorAtual))) Terminada = true;
 
             mudaJogador();
             Turno++;
