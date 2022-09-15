@@ -35,8 +35,8 @@ namespace xadrez
 
         public void colocaPecas()
         {
-            colocaNovaPeca(new Rei(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 1).toPosicao());
-            colocaNovaPeca(new Dama(Cor.Branca, Tabuleiro), new PosicaoXadrez('e', 1).toPosicao());
+            colocaNovaPeca(new Rei(Cor.Branca, Tabuleiro,this), new PosicaoXadrez('e', 1).toPosicao());
+            colocaNovaPeca(new Dama(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 1).toPosicao());
             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('a', 1).toPosicao());
             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('h', 1).toPosicao());
             
@@ -55,8 +55,8 @@ namespace xadrez
             colocaNovaPeca(new Peao(Cor.Branca, Tabuleiro), new PosicaoXadrez('g', 2).toPosicao());
             colocaNovaPeca(new Peao(Cor.Branca, Tabuleiro), new PosicaoXadrez('h', 2).toPosicao());
 
-            colocaNovaPeca(new Rei(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 8).toPosicao());
-            colocaNovaPeca(new Dama(Cor.Preta, Tabuleiro), new PosicaoXadrez('e', 8).toPosicao());
+            colocaNovaPeca(new Rei(Cor.Preta, Tabuleiro,this), new PosicaoXadrez('e', 8).toPosicao());
+            colocaNovaPeca(new Dama(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 8).toPosicao());
 
             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('a', 8).toPosicao());
             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('h', 8).toPosicao());
@@ -75,24 +75,6 @@ namespace xadrez
             colocaNovaPeca(new Peao(Cor.Preta, Tabuleiro), new PosicaoXadrez('f', 7).toPosicao());
             colocaNovaPeca(new Peao(Cor.Preta, Tabuleiro), new PosicaoXadrez('g', 7).toPosicao());
             colocaNovaPeca(new Peao(Cor.Preta, Tabuleiro), new PosicaoXadrez('h', 7).toPosicao());
-
-
-            /* colocaNovaPeca(new Rei(Cor.Branca,Tabuleiro), new PosicaoXadrez('a',1).toPosicao());
-
-             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 1).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 1).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('c', 2).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 2).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('d', 2).toPosicao());
-
-             colocaNovaPeca(new Rei(Cor.Preta, Tabuleiro), new PosicaoXadrez('c', 8).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('b', 8).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 8).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('c', 7).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('b', 7).toPosicao());
-             colocaNovaPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('d', 7).toPosicao());
-            */
-            // Tabuleiro.colocarPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('b', 1).toPosicao());
         }
 
         private Cor corAdversaria(Cor cor)
@@ -189,6 +171,30 @@ namespace xadrez
                 PecasEmJogo.Add(pecaRetirada);
             }
             Tabuleiro.colocarPeca(pecaMovimentada, origem);
+
+
+            //Jogada Especial Roque Pequeno
+            if (pecaMovimentada is Rei && origem.Linha == destino.Coluna && origem.Coluna + 2 == destino.Coluna)
+            {
+                Posicao origemT1 = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoT1 = new Posicao(origem.Linha, origem.Coluna + 1);
+
+                Peca T1 = Tabuleiro.retiraPeca(destinoT1);
+                T1.decrementarMovimento();
+                Tabuleiro.colocarPeca(T1, origemT1);
+
+            }
+            //Jogada Especial Roque Grande
+            if (pecaMovimentada is Rei && origem.Linha == destino.Coluna && origem.Coluna - 2 == destino.Coluna)
+            {
+                Posicao origemT1 = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoT1 = new Posicao(origem.Linha, origem.Coluna - 1);
+
+                Peca T1 = Tabuleiro.retiraPeca(destinoT1);
+                T1.decrementarMovimento();
+                Tabuleiro.colocarPeca(T1, origemT1);
+
+            }
         }
 
         public void realizaJogada (Posicao origem,Posicao destino)
@@ -223,6 +229,31 @@ namespace xadrez
                 PecasEmJogo.Remove(pecaRetirada);
                     };
             Tabuleiro.colocarPeca(pecaMovimentar,destino);
+
+
+            //Jogada Especial Roque Pequeno
+            if(pecaMovimentar is Rei && origem.Linha == destino.Linha  && origem.Coluna + 2 == destino.Coluna)
+            {
+                Posicao origemT1 = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoT1 = new Posicao(origem.Linha, origem.Coluna + 1);
+
+                Peca T1 = Tabuleiro.retiraPeca(origemT1);
+                T1.incrementaMovimento();
+                Tabuleiro.colocarPeca(T1,destinoT1);
+
+            }
+            //Jogada Especial Roque Grande
+            if (pecaMovimentar is Rei && origem.Linha == destino.Linha && origem.Coluna -2  == destino.Coluna)
+            {
+                Posicao origemT1 = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoT1 = new Posicao(origem.Linha, origem.Coluna - 1);
+
+                Peca T1 = Tabuleiro.retiraPeca(origemT1);
+                T1.incrementaMovimento();
+                Tabuleiro.colocarPeca(T1, destinoT1);
+
+            }
+
             return pecaRetirada;
         }
 
