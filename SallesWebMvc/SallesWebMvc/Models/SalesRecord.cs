@@ -18,12 +18,13 @@ namespace SallesWebMvc.Models
         {
         }
 
-        public SalesRecord(int id, DateTime date, double amount, SaleStatus saleStatus)
+        public SalesRecord(int id, DateTime date, double amount, SaleStatus saleStatus, Seller seller)
         {
             Id = id;
             Date = date;
             Amount = amount;
             SaleStatus = saleStatus;
+            Seller = seller;
         }
     }
 }

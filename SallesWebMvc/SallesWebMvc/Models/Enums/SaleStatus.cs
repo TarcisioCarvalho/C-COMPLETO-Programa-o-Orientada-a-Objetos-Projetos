@@ -7,7 +7,7 @@ namespace SallesWebMvc.Models.Enums
 {
     public enum SaleStatus : int
     {
-        Pedding,
+        Pending,
         Billed,
         Canceled
     }
