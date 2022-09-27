@@ -39,3 +39,4 @@ C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\Sall
 C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\SallesWebMvc\SallesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Departments\Details.cshtml.g.cs
 C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\SallesWebMvc\SallesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Departments\Edit.cshtml.g.cs
 C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\SallesWebMvc\SallesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Departments\Index.cshtml.g.cs
+C:\Users\tarci\Documents\C-COMPLETO-Programa-o-Orientada-a-Objetos-Projetos\SallesWebMvc\SallesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Sellers\Index.cshtml.g.cs
