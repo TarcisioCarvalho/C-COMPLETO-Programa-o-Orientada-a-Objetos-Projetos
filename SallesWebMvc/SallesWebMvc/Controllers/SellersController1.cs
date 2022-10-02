@@ -5,6 +5,7 @@ using SallesWebMvc.Services;
 using SallesWebMvc.Services.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,11 +46,11 @@ namespace SallesWebMvc.Controllers
 
         public IActionResult Delete(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction(nameof(Error), "Id not provided!");
 
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) return NotFound();
+            if (obj == null) return RedirectToAction(nameof(Error), "Id not found!");
 
             return View(obj);
         }
@@ -63,20 +64,20 @@ namespace SallesWebMvc.Controllers
         }
         public IActionResult Details(int? id)
         {
-            if(id == null) return NotFound();
+            if(id == null) return RedirectToAction(nameof(Error),"Id not provided!");
 
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) return NotFound();
+            if (obj == null) return RedirectToAction(nameof(Error), "Id not found!");
 
             return View(obj);
         }
         public IActionResult Edit(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction(nameof(Error), "Id not provided!");
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) return NotFound();
+            if (obj == null) return RedirectToAction(nameof(Error), "Id not found!");
 
             List<Department> departments = _departmentService.FindAll();
             SellerFormViewModel sellerFormViewModel = new SellerFormViewModel { Seller = obj, Departments = departments };
@@ -92,16 +93,26 @@ namespace SallesWebMvc.Controllers
             try
             {
                 _sellerService.Update(seller);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Error), "Id mismatch");
             }
             catch (NotFoundException e)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), e.Message);
             }
-            catch (DbConcurrencyException)
+            catch (DbConcurrencyException e)
             {
-                return BadRequest();
+                return RedirectToAction(nameof(Error), e.Message);
             }
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }
