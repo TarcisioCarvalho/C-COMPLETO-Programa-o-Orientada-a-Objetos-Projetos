@@ -35,6 +35,7 @@ namespace SallesWebMvc.Services
         {
             return await _context.Seller.Include(seller => seller.Department).FirstOrDefaultAsync(seller => seller.Id == id);
         }
+
         public async Task RemoveAsync(int id)
         {
             try

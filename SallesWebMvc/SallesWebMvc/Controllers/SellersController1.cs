@@ -73,7 +73,6 @@ namespace SallesWebMvc.Controllers
             }
             catch (IntegrityException e)
             {
-
                 return RedirectToAction(nameof(Error), e.Message);
             }
         }
